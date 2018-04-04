@@ -1,3 +1,9 @@
+// enable tooltips. disabled by default
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+// firebase config options
 var config = {
     apiKey: "AIzaSyDLQne54owNcAYfsmeK-nwE8xblJSqTwck",
     authDomain: "fir-project-13e67.firebaseapp.com",
@@ -6,31 +12,41 @@ var config = {
     storageBucket: "fir-project-13e67.appspot.com",
     messagingSenderId: "747645064922"
 };
+
+// connect to firebase
 firebase.initializeApp(config);
 
-
+// variable for firebase reference
 var database = firebase.database();
 
 
-//Button for adding Employees
-// $("#add-employee-btn").on("click", function (event) {
-//     event.preventDefault();
-//     // Grabs user input
-//     var empName = $("#employee-name-input").val().trim();
-//     var empRole = $("#role-input").val().trim();
-//     var empStart = moment($("#start-input").val().trim(), "DD/MM/YY").format("X");
-//     var empRate = $("#rate-input").val().trim();
+//Button for adding to train schedule
+$("#addTrainBtn").on("click", function (event) {
+    event.preventDefault();
+    // Grabs user input
+    let name = $("#trainName").val().trim();
+    let destination = $("#destination").val().trim();
+    let startTime = $("#startTime").val().trim();
+    let frequencyMinutes = $("#frequency").val().trim();
+    //     let startTime = moment($("#start-input").val().trim(), "DD/MM/YY").format("X");
+    //     let frequencyMinutes = $("#rate-input").val().trim();
 
+    // add train schedule to database
+    database.ref().push({
+        trainName: name,
+        trainDestination: destination,
+        trainStart: startTime,
+        trainFrequency: frequencyMinutes,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
 
-//     database.ref().push({
-//         empName: empName,
-//         empRole: empRole,
-//         empStart: empStart,
-//         emprate: empRate,
-//         dateAdded: firebase.database.ServerValue.TIMESTAMP
-
-//     });
-// });
+    });
+    
+    // Clears all of the text-boxes
+    $("#trainName").val("");
+    $("#destination").val("");
+    $("#startTime").val("");
+    $("#frequency").val("");
+});
 
 
 
@@ -47,7 +63,7 @@ var database = firebase.database();
 //     var employeeStart = childSnapshot.val().empStart;
 //     var employeeRate = childSnapshot.val().emprate;
 //     var dispStart = moment.unix(employeeStart).format("MM/DD/YYYY");
-    
+
 // // Prettify the employee start
 // var empStartPretty = moment.unix(employeeStart).format("MM/DD/YY");
 // // Calculate the months worked using hardcore math
@@ -68,8 +84,7 @@ var database = firebase.database();
 // });
 
 // // Clears all of the text-boxes
-// $("#employee-name-input").val("");
-// $("#role-input").val("");
-// $("#start-input").val("");
-// $("#rate-input").val("");
-
+$("#trainName").val("");
+$("#destination").val("");
+$("#startTime").val("");
+$("#frequency").val("");
