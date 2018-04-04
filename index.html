@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10">
-                                <table class="table table-hover" id='train-table'>
+                                <table class="table table-hover" id='trainTable'>
                                     <thead>
                                         <tr>
                                             <th>Train</th>
@@ -73,18 +73,61 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1">
+                            <span id="addTrainTip2" data-toggle="tooltip" data-placement="top" title="Add Train Form">
+                                <button type="button" class="btn" id="formInput">
+                                    <img src='glyphicon/glyphicons-15-train.png'>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="col-lg-10"></div>
+                    </div>
+
+                    <!-- display form on page if toggled on -->
+                    <div class="row formDisplay noForm">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <form>
+                                <div class="form-group">
+                                    <label for="trainName" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="trainName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination" class="col-form-label">Destination:</label>
+                                    <input type="text" class="form-control" id="destination">
+                                </div>
+                                <div class="form-group">
+                                    <label for="startTime" class="col-form-label">Time of First Train:</label>
+                                    <input type="text" class="form-control" id="startTime">
+                                </div>
+                                <!-- <div class="form-group">
+                                                <label for="startHour" class="col-form-label">Hour:</label>
+                                                <input class="form-control required" id="startHour" pattern="([0-9]|[0-9])">
+                                                <label for="startMinute" class="col-form-label">Minute:</label>
+                                                <input class="form-control" id="startMinute" pattern="([0-9]|[0-9])">
+                                            </div> -->
+                                <div class="form-group">
+                                    <label for="frequency" class="col-form-label">Frequency:</label>
+                                    <input type="text" class="form-control" id="frequency">
+                                </div>
+                                <button type="button" class="btn btn-primary addTrainBtn">Add Train</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- <div class="row">
-        <div class="col-lg-12">
-            <button type="button" class="btn " data-toggle="tooltip" data-placement="top" title="Add Train" data-toggle="modal" data-target="#trainAddModal">
-                <img src='glyphicon/glyphicons-15-train.png'>
-            </button>
+    </div>
 
-        </div>
-    </div> -->
+
+    <!-- modal input  -->
+
     <div class="modal fade" id="trainAddModal" tabindex="-1" role="dialog" aria-labelledby="trainAddModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -95,6 +138,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- <div id="formEntry"> -->
                     <form>
                         <div class="form-group">
                             <label for="trainName" class="col-form-label">Name:</label>
@@ -108,19 +152,27 @@
                             <label for="startTime" class="col-form-label">Time of First Train:</label>
                             <input type="text" class="form-control" id="startTime">
                         </div>
+                        <!-- <div class="form-group">
+                            <label for="startHour" class="col-form-label">Hour:</label>
+                            <input class="form-control required" id="startHour" pattern="([0-9]|[0-9])">
+                            <label for="startMinute" class="col-form-label">Minute:</label>
+                            <input class="form-control" id="startMinute" pattern="([0-9]|[0-9])">
+                        </div> -->
                         <div class="form-group">
                             <label for="frequency" class="col-form-label">Frequency:</label>
                             <input type="text" class="form-control" id="frequency">
                         </div>
                     </form>
+                    <!-- </div> -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="addTrainBtn">Add Train</button>
+                    <button type="button" class="btn btn-primary addTrainBtn">Add Train</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Add Employee  -->
     <!-- <div class="panel panel-primary">

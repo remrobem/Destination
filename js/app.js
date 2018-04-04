@@ -19,9 +19,13 @@ firebase.initializeApp(config);
 // variable for firebase reference
 var database = firebase.database();
 
+$("#formInput").on("click", function (event) {
+    event.preventDefault();
+    $(".formDisplay").toggleClass("noForm");
+});
 
 //Button for adding to train schedule
-$("#addTrainBtn").on("click", function (event) {
+$(".addTrainBtn").on("click", function (event) {
     event.preventDefault();
     // Grabs user input
     let name = $("#trainName").val().trim();
@@ -40,7 +44,7 @@ $("#addTrainBtn").on("click", function (event) {
         dateAdded: firebase.database.ServerValue.TIMESTAMP
 
     });
-    
+
     // Clears all of the text-boxes
     $("#trainName").val("");
     $("#destination").val("");
@@ -50,41 +54,47 @@ $("#addTrainBtn").on("click", function (event) {
 
 
 
-// database.ref().on("child_added", function (childSnapshot) {
-//     // Log everything that's coming out of snapshot
-//     // console.log(childSnapshot.val());
-//     // console.log(childSnapshot.val().empName);
-//     // console.log(childSnapshot.val().empRole);
-//     // console.log(childSnapshot.val().empStart);
-//     // console.log(childSnapshot.val().emprate);
-
-//     var employeeName = childSnapshot.val().empName;
-//     var employeeRole = childSnapshot.val().empRole;
-//     var employeeStart = childSnapshot.val().empStart;
-//     var employeeRate = childSnapshot.val().emprate;
-//     var dispStart = moment.unix(employeeStart).format("MM/DD/YYYY");
-
-// // Prettify the employee start
-// var empStartPretty = moment.unix(employeeStart).format("MM/DD/YY");
-// // Calculate the months worked using hardcore math
-// // To calculate the months worked
-// var empMonths = moment().diff(moment.unix(employeeStart, "X"), "months");
-// console.log(empMonths);
-// // Calculate the total billed rate
-// var empBilled = empMonths * employeeRate;
-// console.log(empBilled);
+database.ref().on("child_added", function (childSnapshot) {
+    //     // Log everything that's coming out of snapshot
+    //     // console.log(childSnapshot.val());
+    //     // console.log(childSnapshot.val().empName);
+    //     // console.log(childSnapshot.val().empRole);
+    //     // console.log(childSnapshot.val().empStart);
+    //     // console.log(childSnapshot.val().emprate);
 
 
-//     // full list of items to the well
-//     $("#employee-table > tbody").append("<tr><td>" + employeeName + "</td><td>" + employeeRole + "</td><td>" +
-//     empStartPretty + "</td><td>" + empMonths + "</td><td>" + employeeRate + "</td><td>" + empBilled + "</td></tr>");
-//     // Handle the errors
-// }, function (errorObject) {
-//     console.log("Errors handled: " + errorObject.code);
-// });
+    console.log(childSnapshot.val().trainName);
+    console.log(childSnapshot.val().trainDestination);
+    console.log(childSnapshot.val().trainStart);
+    console.log(childSnapshot.val().trainFrequency);
 
-// // Clears all of the text-boxes
-$("#trainName").val("");
-$("#destination").val("");
-$("#startTime").val("");
-$("#frequency").val("");
+    let dispName = childSnapshot.val().trainName;
+    let dispDestination = childSnapshot.val().trainDestination;
+    let dispStart = childSnapshot.val().trainStart;
+    let dispFrequency = childSnapshot.val().trainFrequency;
+    let dispNextArrival = "0";
+    let dispWait = "0";
+
+    // var employeeRole = childSnapshot.val().empRole;
+    // var employeeStart = childSnapshot.val().empStart;
+    // var employeeRate = childSnapshot.val().emprate;
+    // var dispStart = moment.unix(employeeStart).format("MM/DD/YYYY");
+
+    // // Prettify the employee start
+    // var empStartPretty = moment.unix(employeeStart).format("MM/DD/YY");
+    // // Calculate the months worked using hardcore math
+    // // To calculate the months worked
+    // var empMonths = moment().diff(moment.unix(employeeStart, "X"), "months");
+    // console.log(empMonths);
+    // // Calculate the total billed rate
+    // var empBilled = empMonths * employeeRate;
+    // console.log(empBilled);
+
+
+    // full list of items to the well
+    $("#trainTable > tbody").append("<tr><td>" + dispName + "</td><td>" + dispDestination + "</td><td>" +
+        dispFrequency + "</td><td>" + dispNextArrival + "</td><td>" + dispWait + "</td></tr>");
+    // Handle the errors
+}, function (errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+});
