@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Anton|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                             <div class="col-lg-1">
                                 <span id="addTrainTip" data-toggle="tooltip" data-placement="top" title="Add Train">
                                     <button type="button" class="btn" id="addTrainModalBtn" data-toggle="modal" data-target="#trainAddModal">
-                                        <img src='glyphicon/glyphicons-15-train.png'>
+                                        <img src='assets/glyphicon/glyphicons-15-train.png'>
                                     </button>
                                 </span>
                             </div>
@@ -67,8 +67,9 @@
                                             <th>Next Arrival</th>
                                             <th>Minutes Until Boarding</th>
                                         </tr>
-                                    </thead>
+                                    </thead>                                   
                                     <tbody>
+                                            <!-- train entries added here dynamically -->
                                     </tbody>
                                 </table>
                                 <div class="col-lg-1"></div>
@@ -80,7 +81,7 @@
                         <div class="col-lg-1">
                             <span id="addTrainTip2" data-toggle="tooltip" data-placement="top" title="Add Train Form">
                                 <button type="submit" class="btn" id="addTrainFormBtn">
-                                    <img src='glyphicon/glyphicons-15-train.png'>
+                                    <img src='assets/glyphicon/glyphicons-15-train.png'>
                                 </button>
                             </span>
                         </div>
@@ -185,7 +186,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <!-- Custom -->
-    <script src="js/app.js"></script>
+    <script src="assets/js/formtemplate.js"></script>
+    <script src="assets/js/firebase.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
