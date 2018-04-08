@@ -46,7 +46,7 @@
 
                             <div class="col-lg-1">
                                 <span id="addTrainTip" data-toggle="tooltip" data-placement="top" title="Add Train">
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#trainAddModal">
+                                    <button type="button" class="btn" id="addTrainModalBtn" data-toggle="modal" data-target="#trainAddModal">
                                         <img src='glyphicon/glyphicons-15-train.png'>
                                     </button>
                                 </span>
@@ -79,7 +79,7 @@
                         <div class="col-lg-1"></div>
                         <div class="col-lg-1">
                             <span id="addTrainTip2" data-toggle="tooltip" data-placement="top" title="Add Train Form">
-                                <button type="button" class="btn" id="formInput">
+                                <button type="submit" class="btn" id="addTrainFormBtn">
                                     <img src='glyphicon/glyphicons-15-train.png'>
                                 </button>
                             </span>
@@ -90,32 +90,30 @@
                     <!-- display form on page if toggled on -->
                     <div class="row formDisplay noForm">
                         <div class="col-lg-1"></div>
-                        <div class="col-lg-10">
-                            <form>
+                        <div class="col-lg-10" id="pageForm">
+                            <!-- <form>
                                 <div class="form-group">
                                     <label for="trainName" class="col-form-label">Name:</label>
-                                    <input type="text" class="form-control" id="trainName">
+                             
+                                    <input type="text" class="form-control trainNameF">
                                 </div>
                                 <div class="form-group">
                                     <label for="destination" class="col-form-label">Destination:</label>
-                                    <input type="text" class="form-control" id="destination">
+                               
+                                    <input type="text" class="form-control destinationF" id="">
                                 </div>
                                 <div class="form-group">
                                     <label for="startTime" class="col-form-label">Time of First Train:</label>
-                                    <input type="text" class="form-control" id="startTime">
+                              
+                                    <input type="text" class="form-control startTimeF" id="">
                                 </div>
-                                <!-- <div class="form-group">
-                                                <label for="startHour" class="col-form-label">Hour:</label>
-                                                <input class="form-control required" id="startHour" pattern="([0-9]|[0-9])">
-                                                <label for="startMinute" class="col-form-label">Minute:</label>
-                                                <input class="form-control" id="startMinute" pattern="([0-9]|[0-9])">
-                                            </div> -->
                                 <div class="form-group">
                                     <label for="frequency" class="col-form-label">Frequency:</label>
-                                    <input type="text" class="form-control" id="frequency">
+                            
+                                    <input type="text" class="form-control frequencyF" id="">
                                 </div>
-                                <button type="button" class="btn btn-primary addTrainBtn">Add Train</button>
-                            </form>
+                                <button type="button" class="btn btn-primary" id="addTrainBtn">Add Train</button>
+                            </form> -->
                         </div>
                         <div class="col-lg-1"></div>
                     </div>
@@ -125,85 +123,50 @@
             </div>
         </div>
     </div>
-    </div>
-
 
     <!-- modal input  -->
 
     <div class="modal fade" id="trainAddModal" tabindex="-1" role="dialog" aria-labelledby="trainAddModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" id="modalContent">
                 <div class="modal-header">
                     <h5 class="modal-title" id="trainAddModalLabel">Add a Train to the Schedule</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <!-- <div id="formEntry"> -->
-                    <form>
+
+                <div class="modal-body" id="modalForm">
+
+                    <!-- <form>
                         <div class="form-group">
                             <label for="trainName" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="trainName">
+                            <input type="text" required class="form-control trainName">
                         </div>
                         <div class="form-group">
                             <label for="destination" class="col-form-label">Destination:</label>
-                            <input type="text" class="form-control" id="destination">
+                            <input type="text" required class="form-control destination">
                         </div>
                         <div class="form-group">
                             <label for="startTime" class="col-form-label">Time of First Train:</label>
-                            <input type="text" class="form-control" id="startTime">
+                            <input type="text" required class="form-control" id="startTimeHH" placeholder="HH" pattern="([01]?[0-9]|2[0-3])" maxlength="2"> :
+                            <input type="text" required class="form-control" id="startTimeMM" placeholder="MM" pattern="[0-5][0-9]" maxlength="2"> 24 hour format
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="startHour" class="col-form-label">Hour:</label>
-                            <input class="form-control required" id="startHour" pattern="([0-9]|[0-9])">
-                            <label for="startMinute" class="col-form-label">Minute:</label>
-                            <input class="form-control" id="startMinute" pattern="([0-9]|[0-9])">
-                        </div> -->
                         <div class="form-group">
                             <label for="frequency" class="col-form-label">Frequency:</label>
-                            <input type="text" class="form-control" id="frequency">
+                            <input type="number" required class="form-control" id="frequency" min="1" step="1" placeholder="minutes">
                         </div>
-                    </form>
-                    <!-- </div> -->
+                    </form> -->
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary addTrainBtn">Add Train</button>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addTrainBtn">Add Train</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>
 
-
-    <!-- Add Employee  -->
-    <!-- <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title"><strong>Add Employee</strong></h3>
-            </div>
-            <div class="panel-body">
-          
-              <form>
-                <div class="form-group">
-                  <label for="employee-name-input">Employee Name</label>
-                  <input class="form-control" id="employee-name-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="role-input">Role</label>
-                  <input class="form-control" id="role-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="start-input">Start Date (DD/MM/YY - ex: 01/01/89)</label>
-                  <input class="form-control" id="start-input" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="rate-input">Monthly Rate</label>
-                  <input class="form-control" id="rate-input" type="text">
-                </div>
-                <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
-              </form>
-            </div>
-          </div> -->
 
 
     <!-- JavaScript -->

@@ -3,28 +3,20 @@ body {
     box-sizing: content-box;
 }
 
-
 #header h1 {
     font-family: 'Anton', sans-serif;
     margin-left: 30px;
     color: white;
-    text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 #header h3 {
     font-family: 'Raleway', sans-serif;
     margin-left: 50px;
     color: white;
-    text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+
 #header {
     background-image: url("../images/schedule.jpg");
     background-repeat: no-repeat;
@@ -38,6 +30,7 @@ body {
 /* #schedule {
     background-color: wheat;
 } */
+
 .tooltip-inner {
     background-color: slateblue
 }
@@ -46,6 +39,31 @@ body {
     color: red;
 }
 
-.noForm {
+/* .noForm {
     display: none;
+} */
+
+.trainName,
+.destination {
+    width: 25em;
+}
+
+#startTimeHH,
+#startTimeMM {
+    width: 4em;
+    display: inline;
+}
+
+#frequency {
+    width: 8em;
+    display: inline;
+}
+
+#pageForm > .modal-footer {
+    float: left;
+    padding-left: 0;
+}
+
+.modal-footer {
+    border: none;
 }
