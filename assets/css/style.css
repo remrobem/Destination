@@ -27,10 +27,6 @@ body {
     float: right;
 }
 
-/* #schedule {
-    background-color: wheat;
-} */
-
 .tooltip-inner {
     background-color: slateblue
 }
@@ -38,10 +34,6 @@ body {
 #colon {
     color: red;
 }
-
-/* .noForm {
-    display: none;
-} */
 
 .trainName,
 .destination {
@@ -59,7 +51,7 @@ body {
     display: inline;
 }
 
-#pageForm > .modal-footer {
+#pageForm>.modal-footer {
     float: left;
     padding-left: 0;
 }

@@ -1,5 +1,3 @@
-
-
 // firebase config options
 const config = {
     apiKey: "AIzaSyDLQne54owNcAYfsmeK-nwE8xblJSqTwck",
@@ -18,48 +16,57 @@ const database = firebase.database();
 
 // listener to display schedule on page load and when childadded
 database.ref().on("child_added", function (childSnapshot) {
-    //     // Log everything that's coming out of snapshot
-    //     // console.log(childSnapshot.val());
-    //     // console.log(childSnapshot.val().empName);
-    //     // console.log(childSnapshot.val().empRole);
-    //     // console.log(childSnapshot.val().empStart);
-    //     // console.log(childSnapshot.val().emprate);
-
 
     console.log(childSnapshot.val().trainName);
     console.log(childSnapshot.val().trainDestination);
     console.log(childSnapshot.val().trainStart);
     console.log(childSnapshot.val().trainFrequency);
+    console.log(childSnapshot);
 
+    // get datafrom database ready to display
     let dispName = childSnapshot.val().trainName;
     let dispDestination = childSnapshot.val().trainDestination;
     let dispStart = childSnapshot.val().trainStart;
     let dispFrequency = childSnapshot.val().trainFrequency;
-    let dispNextArrival = "0";
-    let dispWait = "0";
 
-    // var employeeRole = childSnapshot.val().empRole;
-    // var employeeStart = childSnapshot.val().empStart;
-    // var employeeRate = childSnapshot.val().emprate;
-    // var dispStart = moment.unix(employeeStart).format("MM/DD/YYYY");
+    //convert the frequency minutes into seconds
+    let frequencySeconds = (childSnapshot.val().trainFrequency) * 60;
+    // get current Unix time
+    let currentTimeUnix = moment().unix();
+    // get the train start time in Unix time
+    let trainStartTimeUnix = moment(childSnapshot.val().trainStart, "HHmm").unix();
 
-    // // Prettify the employee start
-    // var empStartPretty = moment.unix(employeeStart).format("MM/DD/YY");
-    // // Calculate the months worked using hardcore math
-    // // To calculate the months worked
-    // var empMonths = moment().diff(moment.unix(employeeStart, "X"), "months");
-    // console.log(empMonths);
-    // // Calculate the total billed rate
-    // var empBilled = empMonths * employeeRate;
-    // console.log(empBilled);
+    // get the seconds since the train start, divide it by the frequency and 
+    // round up to get the next occurance number of a train arrival. 
+    // multiply that by the frequency and add to the train start time to get the next arrival in Unix time  
+    let durationSinceStartUnix = moment(moment.unix(currentTimeUnix, "X").diff(moment.unix(trainStartTimeUnix, "X"))).unix();
+    let nextArrivalCount = Math.ceil((durationSinceStartUnix / frequencySeconds));
+    let nextArrivalUnix = trainStartTimeUnix + (nextArrivalCount * frequencySeconds);
 
+    dispNextArrival = moment.unix(nextArrivalUnix).format("MM/DD/YYYY HH:mm");
+    dispWait = moment.unix(nextArrivalUnix, "X").diff(moment.unix(currentTimeUnix, "X"), "minutes");
+    if (dispWait == "0") {
+        dispWait = "Boarding now";
+    }
 
     // add train entries to the HTML table
-    $("#trainTable > tbody").append("<tr><td>" + dispName + "</td><td>" + dispDestination + "</td><td>" +
-        dispFrequency + "</td><td>" + dispNextArrival + "</td><td>" + dispWait + "</td></tr>");
+    $("#trainTable > tbody").append("<tr>" +
+        "<td><button type='submit'><i class='fas fa-trash-alt'></i></button>" +
+        "</td><td>" +
+        "<button type='submit'><i class='far fa-edit'></i></button>" +
+        "</td><td>" +
+        dispName +
+        "</td><td>" +
+        dispDestination +
+        "</td><td>" +
+        dispFrequency +
+        "</td><td>" + 
+        dispNextArrival + 
+        "</td><td>" + 
+        dispWait + 
+        "</td></tr>");
+
     // Handle any firebase error
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
-
-
