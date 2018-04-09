@@ -61,8 +61,8 @@
                                 <table class="table table-hover" id='trainTable'>
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th></th>
+                                            <!-- <th></th>
+                                            <th></th> -->
                                             <th>Train</th>
                                             <th>Destination</th>
                                             <th>Frequency(min)</th>
@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="col-lg-1"></div>
                         <div class="col-lg-1">
-                            <span id="addTrainTip2" data-toggle="tooltip" data-placement="top" title="Add Train Form">
+                            <span id="addTrainTip2" data-toggle="tooltip" data-placement="top" title="Add Train">
                                 <button type="submit" class="btn" id="addTrainFormBtn">
                                     <img src='assets/glyphicon/glyphicons-15-train.png'>
                                 </button>
@@ -94,29 +94,7 @@
                     <div class="row formDisplay noForm">
                         <div class="col-lg-1"></div>
                         <div class="col-lg-10" id="pageForm">
-                            <!-- <form>
-                                <div class="form-group">
-                                    <label for="trainName" class="col-form-label">Name:</label>
-                             
-                                    <input type="text" class="form-control trainNameF">
-                                </div>
-                                <div class="form-group">
-                                    <label for="destination" class="col-form-label">Destination:</label>
-                               
-                                    <input type="text" class="form-control destinationF" id="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="startTime" class="col-form-label">Time of First Train:</label>
-                              
-                                    <input type="text" class="form-control startTimeF" id="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="frequency" class="col-form-label">Frequency:</label>
-                            
-                                    <input type="text" class="form-control frequencyF" id="">
-                                </div>
-                                <button type="button" class="btn btn-primary" id="addTrainBtn">Add Train</button>
-                            </form> -->
+                            <!-- this is where the form is dynamically added -->
                         </div>
                         <div class="col-lg-1"></div>
                     </div>
@@ -140,32 +118,9 @@
                 </div>
 
                 <div class="modal-body" id="modalForm">
-
-                    <!-- <form>
-                        <div class="form-group">
-                            <label for="trainName" class="col-form-label">Name:</label>
-                            <input type="text" required class="form-control trainName">
-                        </div>
-                        <div class="form-group">
-                            <label for="destination" class="col-form-label">Destination:</label>
-                            <input type="text" required class="form-control destination">
-                        </div>
-                        <div class="form-group">
-                            <label for="startTime" class="col-form-label">Time of First Train:</label>
-                            <input type="text" required class="form-control" id="startTimeHH" placeholder="HH" pattern="([01]?[0-9]|2[0-3])" maxlength="2"> :
-                            <input type="text" required class="form-control" id="startTimeMM" placeholder="MM" pattern="[0-5][0-9]" maxlength="2"> 24 hour format
-                        </div>
-                        <div class="form-group">
-                            <label for="frequency" class="col-form-label">Frequency:</label>
-                            <input type="number" required class="form-control" id="frequency" min="1" step="1" placeholder="minutes">
-                        </div>
-                    </form> -->
+                    <!-- this is where the form is dynamically added -->
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="addTrainBtn">Add Train</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div> -->
-
+                <!-- this is where the form buttons are dynamically added -->
             </div>
         </div>
     </div>

@@ -59,3 +59,7 @@ body {
 .modal-footer {
     border: none;
 }
+
+noDisplay {
+    display: none;
+}
